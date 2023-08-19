@@ -16,19 +16,19 @@ function Menu({menuItem}) {
                                 <ul>
                                 {item.link1 ?
                                     <li>
-                                        <a href={item.link1} target="_blank">
+                                        <a href={item.link1} target="_blank" rel="noreferrer">
                                             {item.link1 ? <GitHub />:""}
                                         </a>
                                     </li>:""}
                                     {item.link2 ?
                                     <li>
-                                        <a href={item.link2} target="_blank">
+                                        <a href={item.link2} target="_blank" rel="noreferrer">
                                             {item.link2 ? <YouTube />: ""}
                                         </a>
                                     </li>:""}
                                     {item.link3 ?
                                     <li>
-                                        <a href={item.link3} target="_blank">
+                                        <a href={item.link3} target="_blank" rel="noreferrer">
                                             {item.link3 ? <Play />:""}
                                         </a>
                                     </li>:""}
