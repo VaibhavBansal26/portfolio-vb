@@ -11,10 +11,10 @@ jobs:
     name: Build and Push
     steps:
       - name: git-checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         
       - name: Set up node-js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 16
 
@@ -24,11 +24,10 @@ jobs:
       - name: Build
         run: npm run build # The build command of your project
 
-      - name: Push
-        uses: s0/git-publish-subdir-action@develop
+      - name: Deploy to another branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_dir: ./build # The directory where your assets are generated
+          publish_branch: build # The branch to push the assets to
         env:
-          REPO: self
-          BRANCH: build # The branch name where you want to push the assets
-          FOLDER: build # The directory where your assets are generated
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub will automatically add this - you don't need to bother getting a token
-          MESSAGE: "Build: ({sha}) {msg}" # The commit message
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
